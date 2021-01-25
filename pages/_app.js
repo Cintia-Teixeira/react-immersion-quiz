@@ -29,7 +29,7 @@ function IndexPage() {
   return (
     <div>
       <Head>
-        <title>My page title</title>
+        <title>Imersão React</title>
         <meta property="og:image" content="https://marquesfernandes.com/wp-content/uploads/2020/01/1555172.jpg"></meta>
       </Head>
     </div>
@@ -41,7 +41,7 @@ const theme = db.theme;
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <IndexPage />
+        <IndexPage />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
