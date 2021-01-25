@@ -23,14 +23,14 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
-` 
-const theme = db.xmasTheme;
+`
+const theme = db.theme;
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <GlobalStyle />
+        <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
