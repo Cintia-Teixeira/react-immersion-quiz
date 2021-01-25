@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
   }
 ` 
-const theme = db.theme;
+const theme = db.xmasTheme;
 
 export default function App({ Component, pageProps }) {
   return (

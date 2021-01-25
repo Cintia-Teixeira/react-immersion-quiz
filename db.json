@@ -1,5 +1,6 @@
 {
   "bg": "https://marquesfernandes.com/wp-content/uploads/2020/01/1555172.jpg",
+  "xmasBg":"https://images.pexels.com/photos/1656564/pexels-photo-1656564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   "title": "Javascript",
   "description": "Teste os seus conhecimentos sobre Javascript!",
   "questions": [
@@ -38,6 +39,17 @@
       "primary": "#f9dd3c",
       "secondary": "#fbcc57",
       "mainBg": "#5cadc0",
+      "contrastText": "#ffffff",
+      "wrong": "#ff5722",
+      "success": "#4caf50"
+    },
+    "borderRadius": "4px"
+  },
+  "xmasTheme": {
+    "colors": {
+      "primary": "#146b3a",
+      "secondary": "#bb2528",
+      "mainBg": "#ea4630",
       "contrastText": "#ffffff",
       "wrong": "#ff5722",
       "success": "#4caf50"
