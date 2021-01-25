@@ -1,0 +1,47 @@
+{
+  "bg": "https://marquesfernandes.com/wp-content/uploads/2020/01/1555172.jpg",
+  "title": "Javascript",
+  "description": "Teste os seus conhecimentos sobre Javascript!",
+  "questions": [
+    {
+      "image": "https://gph.is/2IHxSBa",
+      "title": "Qual o caractere Javascript que performa a operação matemática de módulo, encontrando o resto da divisão de um número por outro?",
+      "description": "Essa é pra aquecer",
+      "answer": 3,
+      "alternatives": [
+        "!",
+        "$",
+        "#",
+        "%",
+        "&"
+      ]
+    },
+    {
+      "image": "http://gph.is/2pC9dPI",
+      "title": "Em páginas HTML, as rotinas JavaScript são delimitadas pelos tags:",
+      "description": "Faz tempo em haha",
+      "answer": 1,
+      "alternatives": [
+        "<html> e </html>",
+        "<script> e </script>",
+        "<body> e </body>",
+        "<head> e </head>",
+        "<p> e </p>"
+      ]
+    }
+  ],
+  "external": [
+    ""
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#f9dd3c",
+      "secondary": "#fbcc57",
+      "mainBg": "#5cadc0",
+      "contrastText": "#ffffff",
+      "wrong": "#ff5722",
+      "success": "#4caf50"
+    },
+    "borderRadius": "4px"
+  }
+}
