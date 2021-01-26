@@ -1,10 +1,13 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+
 import db from '../db.json';
-import QuizBackground from '../src/components/QuizBackground'
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
+import QuizBackground from '../src/components/QuizBackground';
+import Widget from '../src/components/Widget';
+import QuizLogo from '../src/components/QuizLogo';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import Form from '../src/components/Form';
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -17,7 +20,6 @@ export const QuizContainer = styled.div`
   }
 `;
 
-
 export default function Home() {
   return (
     <QuizBackground backgroundImage={db.bg}>
@@ -29,6 +31,7 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
+            <Form />
           </Widget.Content>
         </Widget>
 
@@ -38,10 +41,9 @@ export default function Home() {
             <p>Lorem ipsum...</p>
           </Widget.Content>
         </Widget>
-        <Footer/>
+        <Footer />
       </QuizContainer>
-      <GitHubCorner></GitHubCorner>
+      <GitHubCorner />
     </QuizBackground>
-
-  )
+  );
 }
