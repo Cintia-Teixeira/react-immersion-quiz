@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import db from '../db.json';
 import QuizBackground from '../src/components/QuizBackground';
 import Widget from '../src/components/Widget';
@@ -19,10 +20,8 @@ export const QuizContainer = styled.div`
 `;
 
 export default function QuizPage() {
-  // eslint-disable-next-line no-restricted-globals
-  const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get('name');
-
+  const router = useRouter();
+  const { name } = router.query;
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
