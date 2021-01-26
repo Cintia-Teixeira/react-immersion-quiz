@@ -20,7 +20,7 @@ export const QuizContainer = styled.div`
 
 export default function QuizPage() {
   // eslint-disable-next-line no-restricted-globals
-  const urlParams = new URLSearchParams(location.search);
+  const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get('name');
 
   return (
