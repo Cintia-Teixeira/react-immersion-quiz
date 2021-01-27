@@ -126,12 +126,16 @@ export default function QuizPage() {
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
-        <h2>
-          Vamos jogar,
-          {' '}
-          {name}
-          !
-        </h2>
+        {screenState === screenStates.QUIZ
+        && (
+          <h2>
+            Vamos jogar,
+            {' '}
+            {name}
+            !
+          </h2>
+        )}
+
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
         {screenState === screenStates.QUIZ && (
