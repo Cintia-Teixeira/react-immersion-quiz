@@ -36,7 +36,7 @@ function ResultWidget({ results }) {
           {results.map((result, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <li key={`result__${index}_${result}`}>
-              #0
+              {index + 1 < 10 ? '#0' : '#'}
               {index + 1}
               {' '}
               Resultado:
@@ -105,21 +105,7 @@ function QuestionWidget({
           padding: '24px 3px 32px 6px',
         }}
       >
-        {question.title.map((title, titleIndex) => {
-          const titleId = `title_${titleIndex}`;
-          return (
-            <h2
-              key={`key_${titleId}`}
-              style={{
-                fontsize: '13px',
-                lineBreak: true,
-              }}
-            >
-              {title}
-            </h2>
-          );
-        })}
-
+        <h2>{question.title}</h2>
         <p>{question.description}</p>
         <form
           onSubmit={(e) => {
