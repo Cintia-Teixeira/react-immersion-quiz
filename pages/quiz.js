@@ -11,6 +11,45 @@ import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Button from '../src/components/Button';
 
+function ResultWidget({ results }) {
+  return (
+    <Widget>
+      <Widget.Header>
+        Resultado:
+      </Widget.Header>
+
+      <Widget.Content>
+        <p>
+          Você acertou
+          {' '}
+          {results.reduce((actualSum, actualResult) => {
+            const isRightAnswer = actualResult === true;
+            if (isRightAnswer) {
+              return actualSum + 1;
+            }
+            return actualSum;
+          }, 0)}
+          {' '}
+          perguntas
+        </p>
+        <ul>
+          {results.map((result, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={`result__${index}_${result}`}>
+              #0
+              {index + 1}
+              {' '}
+              Resultado:
+              {' '}
+              {result === true ? 'Acertou' : 'Errou'}
+            </li>
+          ))}
+        </ul>
+      </Widget.Content>
+    </Widget>
+  );
+}
+
 function LoadingWidget() {
   return (
     <Widget>
@@ -36,9 +75,14 @@ function LoadingWidget() {
 }
 
 function QuestionWidget({
-  question, questionIndex, totalQuestions, handleSubmit,
+  question, questionIndex, totalQuestions, handleSubmit, addResult,
 }) {
   const questionId = `question_${questionIndex}`;
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
+  const rightAnswer = question.answer;
+  const isCorrect = selectedAlternative === rightAnswer;
+  const hasAlternativeSelected = selectedAlternative !== undefined;
 
   return (
     <Widget>
@@ -80,7 +124,13 @@ function QuestionWidget({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit();
+            setIsQuestionSubmited(true);
+            setTimeout(() => {
+              addResult(isCorrect);
+              handleSubmit();
+              setIsQuestionSubmited(false);
+              setSelectedAlternative(undefined);
+            }, 3 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -94,12 +144,18 @@ function QuestionWidget({
                   id={alternativeId}
                   name={questionId}
                   type="radio"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setSelectedAlternative(alternativeIndex);
+                  }}
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
-          <Button type="submit">Confirmar</Button>
+          <Button type="submit" disabled={!hasAlternativeSelected}>Confirmar</Button>
+          {isQuestionSubmited && isCorrect && <p>Parabéns, você acertou!</p>}
+          {isQuestionSubmited && !isCorrect && <p>Poxa, essa você errou, mas não desanime!</p>}
         </form>
       </Widget.Content>
     </Widget>
@@ -117,6 +173,7 @@ export default function QuizPage() {
   const { name } = router.query;
 
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
+  const [results, setResults] = React.useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const totalQuestions = db.questions.length;
   const questionIndex = currentQuestionIndex;
@@ -135,6 +192,13 @@ export default function QuizPage() {
     } else {
       setScreenState(screenStates.RESULT);
     }
+  }
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result,
+    ]);
   }
 
   return (
@@ -159,10 +223,11 @@ export default function QuizPage() {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             handleSubmit={handleSubmit}
+            addResult={addResult}
           />
         )}
 
-        {screenState === screenStates.RESULT && <h1>Parabéns</h1>}
+        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
         <Footer />
       </QuizContainer>
       <GitHubCorner />
