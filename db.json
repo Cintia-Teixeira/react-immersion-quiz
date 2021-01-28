@@ -1,13 +1,13 @@
 {
   "bg": "https://marquesfernandes.com/wp-content/uploads/2020/01/1555172.jpg",
-  "xmasBg":"https://images.pexels.com/photos/1656564/pexels-photo-1656564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "xmasBg": "https://images.pexels.com/photos/1656564/pexels-photo-1656564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   "title": "Javascript",
   "description": "Teste os seus conhecimentos sobre Javascript!",
   "questions": [
     {
-      "image": "https://gph.is/2IHxSBa",
-      "title": "Qual o caractere Javascript que performa a operação matemática de módulo, encontrando o resto da divisão de um número por outro?",
-      "description": "Essa é pra aquecer",
+      "image": "https://media.giphy.com/media/APqEbxBsVlkWSuFpth/giphy.gif",
+      "title":"Qual o caractere Javascript que performa a operação matemática de módulo, encontrando o resto da divisão de um número por outro?",
+      "description": "Essa é pra aquecer.",
       "answer": 3,
       "alternatives": [
         "!",
@@ -18,9 +18,9 @@
       ]
     },
     {
-      "image": "http://gph.is/2pC9dPI",
+      "image": "https://media.giphy.com/media/3o84ssNdwMt8md6R3i/giphy.gif",
       "title": "Em páginas HTML, as rotinas JavaScript são delimitadas pelos tags:",
-      "description": "Faz tempo em haha",
+      "description": "Se liga, que essa é fácil.",
       "answer": 1,
       "alternatives": [
         "<html> e </html>",
@@ -28,6 +28,105 @@
         "<body> e </body>",
         "<head> e </head>",
         "<p> e </p>"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/XD9o33QG9BoMis7iM4/giphy.gif",
+      "title": "Um certo documento HTML contém o seguinte elemento h1:\n <h1 id=”meuId”>Bem-Vindo</h1>\n Deseja-se alterar o conteúdo desse h1 via JavaScript.\n  A instrução que atinge esse objetivo é:",
+      "description": "Vamos lá, atenção!",
+      "answer": 3,
+      "alternatives": [
+        "document.getElement(“h1”). innerHTML = “Alterado”;",
+        "document.getElementById(“h1”). innerHTML = “Alterado”;",
+        "document.getElementByName(“h1”). innerHTML = “Alterado”;",
+        "document.getElementById(“meuId”). innerHTML = “Alterado”;",
+        "document.getElementByName(“meuId”). innerHTML = “Alterado”;"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/MKSqMxza1V4vC/giphy.gif",
+      "title": "O React é uma biblioteca JavaScript de código aberto e, atualmente, é uma das ferramentas mais populares entre os desenvolvedores web. São características do React ser uma biblioteca",
+      "description": "Essa é fresquinha!",
+      "answer": 2,
+      "alternatives": [
+        "declarativa, que não gerencia seu próprio virtual DOM e não permite a criação de aplicativos móveis.",
+        "imperativa, que não gerencia seu próprio virtual DOM e não dá suporte a componentes reutilizáveis.",
+        "declarativa, que gerencia seu próprio virtual DOM e permite a criação de aplicativos móveis.",
+        "imperativa, que gerencia seu próprio virtual DOM e dá suporte a componentes reutilizáveis."
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/APqEbxBsVlkWSuFpth/giphy.gif",
+      "title": "Na linguagem JavaScript, os operadores == e === podem produzir resultados diferentes apenas quando os operandos",
+      "description": "Será que tem diferença?",
+      "answer": 3,
+      "alternatives": [
+        "fizerem referência a um mesmo objeto.",
+        "possuírem valores diferentes.",
+        "possuírem valores iguais.",
+        "forem de tipos diferentes.",
+        "forem de tipos iguais."
+      ]
+    },
+    {
+      "image": ["https://media.giphy.com/media/26tP4gFBQewkLnMv6/giphy.gif"],
+      "title": "Um Técnico elaborou o programa a seguir, na Linguagem HTML com JavaScript.\n <!DOCTYPE html> <html> <script> function botao ( ) { alert (''B'') ; } </script> <body> <input type=''button'' onclick=''botao ( )''  value = ''A''/> </body> </html>\n Sobre esse programa é correto afirmar que, ao ser aberto por um navegador que suporte HTML e JavaScript, como o Chrome e o Edge, um botão será exibido na tela com o conteúdo",
+      "description": "Atenção hein!",
+      "answer": 0,
+      "alternatives": [
+        "A, que, ao ser pressionado com um click, provocará a exibição de uma janela.",
+        "A, que, ao ser pressionado com dois clicks, trocará o seu valor para B.",
+        "B, que, ao ser pressionado com um click, provocará a exibição de uma janela.",
+        "B, que, ao ser pressionado com dois clicks, trocará o seu valor para A.",
+        "B, que, ao ser pressionado com um click, apresentará na tela o valor A."
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/SAAMcPRfQpgyI/giphy.gif",
+      "title": "De acordo com o ciclo de vida de um componente no React.js , assinale a alternativa em que todos os métodos são considerados como Updating:",
+      "description": "Vamos atualizar nossos conhecimentos haha",
+      "answer": 3,
+      "alternatives": [
+        " getState(), forceUpdate() e render()",
+        "constructor() e componentWillMount()",
+        "componentDidMount() e componentWillUnmount()",
+        "componentWillReceiveProps(), static getDerivedStateFromProps() e render()",
+        "componentDidCatch(), constructor() e render()"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/3bhC41NM5avcKnISes/giphy.gif",
+      "title": "Um identificador é uma palavra usada para identificar variáveis, constantes e funções criadas pelo programador. Um identificador JavaScript deve começar com:",
+      "description": "Sabe essa?",
+      "answer": 2,
+      "alternatives": [
+        "uma letra (somente maiúscula), sustenido (#), ou cifrão ($)",
+        "uma letra (somente minúscula), underline (_), ou porcentagem (%)",
+        "uma letra (maiúscula ou minúscula), underline (_), ou cifrão ($)",
+        "uma letra (maiúscula ou minúscula), underline (#), ou cifrão (%)"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/IPbS5R4fSUl5S/giphy.gif",
+      "title": "Julgue o item seguinte, a respeito de arquitetura de aplicações para ambiente web e arquitetura em camadas: React é uma biblioteca JavaScript usada para a criação de interfaces gráficas com o usuário e cuja arquitetura é baseada em componentes. Essa biblioteca pode ser renderizada no servidor, utilizando-se Node.",
+      "description": "Será que é pegadinha?",
+      "answer": 0,
+      "alternatives": [
+        "Certo",
+        "Errado"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/IPbS5R4fSUl5S/giphy.gif",
+      "title": "Deseja-se representar, em formato JSON (JavaScript Object Notation), um objeto contendo notas de dois alunos. Uma representação correta de um possível objetopara este fim é:",
+      "description": "Muita cuca no lance!",
+      "answer": 2,
+      "alternatives": [
+        "[{''nome'': ''José'', ''notas'': [5.5, 8, 7]}, {''nome'': ''Maria'', ''notas'': [8, 9, 7.5]}]",
+        "{''Nomes'': [''José'', ''Maria'']}, {''Notas'': [[5.5, 8, 7], [8, 9, 7.5]]}",
+        "{''Alunos'': [{''nome'': ''José'', ''notas'': [5.5, 8, 7]}, {''nome'': ''Maria'', ''notas'': [8, 9, 7.5]}]}",
+        "{''Alunos'': [''José'' = [5.5, 8, 7], ''Maria'' = [8, 9, 7.5]]}",
+        "{''Alunos'' = [{''nome'' = “José”, ''notas'' = [5.5, 8, 7]}, {''nome'' = ''Maria'', ''notas'' = [8, 9, 7.5]}]}"
       ]
     }
   ],
