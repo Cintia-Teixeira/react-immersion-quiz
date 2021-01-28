@@ -9,6 +9,7 @@ margin-left: 1px;
 border-radius: 3,5px;
 background-color: transparent;
 font-size: 14px;
+font-family: 'Lato';
 line-height: 24px;
 letter-spacing: 0.15px;
 color: #ffffff;
