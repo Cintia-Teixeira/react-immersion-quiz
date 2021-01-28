@@ -12,11 +12,14 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import AlternativesForm from '../src/components/AlternativesForm';
 import Button from '../src/components/Button';
 
-function ResultWidget({ results }) {
+function ResultWidget({ results, name }) {
   return (
     <Widget>
       <Widget.Header>
-        Resultado:
+        <strong>
+          {name}
+          , veja seu resultado:
+        </strong>
       </Widget.Header>
 
       <Widget.Content>
@@ -222,7 +225,7 @@ export default function QuizPage() {
           />
         )}
 
-        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+        {screenState === screenStates.RESULT && <ResultWidget results={results} name={name} />}
         <Footer />
       </QuizContainer>
       <GitHubCorner />
