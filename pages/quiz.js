@@ -9,6 +9,7 @@ import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
+import AlternativesForm from '../src/components/AlternativesForm';
 import Button from '../src/components/Button';
 
 function ResultWidget({ results }) {
@@ -107,7 +108,7 @@ function QuestionWidget({
       >
         <h2>{question.title}</h2>
         <p>{question.description}</p>
-        <form
+        <AlternativesForm
           onSubmit={(e) => {
             e.preventDefault();
             setIsQuestionSubmited(true);
@@ -121,8 +122,16 @@ function QuestionWidget({
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative_${alternativeIndex}`;
+            const isSelected = selectedAlternative === alternativeIndex;
+            const alternativeSelectedStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             return (
-              <Widget.Topic as="label" htmlFor={alternativeId} key={`key_${alternativeId}`}>
+              <Widget.Topic
+                as="label"
+                htmlFor={alternativeId}
+                key={`key_${alternativeId}`}
+                data-selected={isSelected}
+                data-status={isQuestionSubmited && alternativeSelectedStatus}
+              >
                 <input
                   style={{
                     display: 'none',
@@ -142,7 +151,7 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected}>Confirmar</Button>
           {isQuestionSubmited && isCorrect && <p>Parabéns, você acertou!</p>}
           {isQuestionSubmited && !isCorrect && <p>Poxa, essa você errou, mas não desanime!</p>}
-        </form>
+        </AlternativesForm>
       </Widget.Content>
     </Widget>
   );
