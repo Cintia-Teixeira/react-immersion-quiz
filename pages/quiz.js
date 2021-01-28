@@ -18,8 +18,18 @@ function LoadingWidget() {
         Carregando...
       </Widget.Header>
 
-      <Widget.Content>
-        [Desafio do Loading]
+      <Widget.Content
+        style={{ padding: 0 }}
+      >
+        <img
+          src="https://media.giphy.com/media/7qV3yswT0K8hi/giphy.gif"
+          alt="Loading"
+          style={{
+            width: '100%',
+            height: '200px',
+            objectFit: 'cover',
+          }}
+        />
       </Widget.Content>
     </Widget>
   );
@@ -51,16 +61,21 @@ function QuestionWidget({
           padding: '24px 3px 32px 6px',
         }}
       >
-        {question.title.map((title) => (
-          <h2
-            style={{
-              fontsize: '13px',
-              lineBreak: true,
-            }}
-          >
-            {title}
-          </h2>
-        ))}
+        {question.title.map((title, titleIndex) => {
+          const titleId = `title_${titleIndex}`;
+          return (
+            <h2
+              key={`key_${titleId}`}
+              style={{
+                fontsize: '13px',
+                lineBreak: true,
+              }}
+            >
+              {title}
+            </h2>
+          );
+        })}
+
         <p>{question.description}</p>
         <form
           onSubmit={(e) => {
@@ -73,12 +88,12 @@ function QuestionWidget({
             return (
               <Widget.Topic as="label" htmlFor={alternativeId} key={`key_${alternativeId}`}>
                 <input
-                  id={alternativeId}
-                  name={questionId}
-                  type="radio"
                   style={{
                     display: 'none',
                   }}
+                  id={alternativeId}
+                  name={questionId}
+                  type="radio"
                 />
                 {alternative}
               </Widget.Topic>
@@ -127,14 +142,14 @@ export default function QuizPage() {
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.QUIZ
-        && (
-          <h2>
-            Vamos jogar,
-            {' '}
-            {name}
-            !
-          </h2>
-        )}
+          && (
+            <h2>
+              Vamos jogar,
+              {' '}
+              {name}
+              !
+            </h2>
+          )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
