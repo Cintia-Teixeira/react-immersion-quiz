@@ -2,22 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ButtonBase = styled.button`
+const ButtonBase = styled.button`  
+  background-color: ${({ theme }) => theme.colors.primary};
+color: ${({ theme }) => theme.colors.contrastText};
+border-radius: ${({ theme }) => theme.borderRadius};
+border: 0;
 width: 100%;
 height: 36px;
 margin-top: 20px;
 box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-border-radius: 4px;
-background: #f9dd3c;
-font-family: Lato;
-font-style: normal;
 font-weight: bold;
 font-size: 14px;
-line-height: 16px;
-text-align: center;
-letter-spacing: 1.25px;
+line-height: 1;
 text-transform: uppercase;
-color: #fff
+letter-spacing: 1.25px;
+cursor: pointer;
+  &:hover,
+  &:focus {
+    opacity: .5;
+  }
+  &:disabled {
+    background-color: #979797;
+    cursor: not-allowed;
+  }
 `;
 
 // eslint-disable-next-line react/prop-types
