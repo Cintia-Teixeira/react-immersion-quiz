@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import InputBase from '../Input';
 import Button from '../Button';
 
-export default function Form() {
+export default function HomeForm() {
   const router = useRouter();
 
   const [name, setName] = React.useState('');

@@ -8,7 +8,7 @@ import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-import Form from '../src/components/Form';
+import HomeForm from '../src/components/HomeForm';
 import Link from '../src/components/Link';
 
 // eslint-disable-next-line react/prop-types
@@ -70,7 +70,7 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p><strong>{db.description}</strong></p>
-            <Form />
+            <HomeForm />
           </Widget.Content>
         </Widget>
 
