@@ -8,6 +8,7 @@ import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Form from '../src/components/Form';
+import Link from '../src/components/Link';
 
 // eslint-disable-next-line react/prop-types
 function ExternalQuizList() {
@@ -15,12 +16,11 @@ function ExternalQuizList() {
     <Widget.Content>
       <p><strong>Aproveita e dá uma olhada também nesses outros quizzes:</strong></p>
       {db.external.map((url) => {
-        const prepareUrl = url
+        const [repoName, gitHubUser] = url
           .replace(/\//g, '')
           .replace('https:', '')
-          .replace('.vercel.app', '');
-
-        const [repoName, user] = prepareUrl.split('.');
+          .replace('.vercel.app', '')
+          .split('.');
         return (
           <li
             key={url}
@@ -29,12 +29,13 @@ function ExternalQuizList() {
             }}
           >
             <Widget.Topic
+              as={Link}
               style={{
                 fontSize: '14.5px',
               }}
-              href={url}
+              href={`/quiz/${repoName}___${gitHubUser}`}
             >
-              {`${user}/${repoName}`}
+              {`${gitHubUser}/${repoName}`}
             </Widget.Topic>
           </li>
         );
