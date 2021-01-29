@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import db from '../db.json';
 import QuizBackground from '../src/components/QuizBackground';
@@ -48,7 +49,16 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0, duration: 0.5 }}
+          variants={{
+            visible: { opacity: 1, y: '0' },
+            hidden: { opacity: 0, y: '100%' },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
           <Widget.Header>
             <h1
               style={{
@@ -64,10 +74,23 @@ export default function Home() {
           </Widget.Content>
         </Widget>
 
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          variants={{
+            visible: { opacity: 1 },
+            hidden: { opacity: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
           <ExternalQuizList />
         </Widget>
-        <Footer />
+        <Footer
+          as={motion.div}
+          animate={{ rotate: 360 }}
+          transition={{ type: 'spring', velocity: 2 }}
+        />
       </QuizContainer>
       <GitHubCorner />
     </QuizBackground>
