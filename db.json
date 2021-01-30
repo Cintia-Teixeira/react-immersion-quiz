@@ -131,9 +131,9 @@
     }
   ],
   "external": [
+    "https://wanda-vision-aluraquiz.vercel.app/",
     "https://batquiz-imersao-next-alura.martinsgabriel1956.vercel.app/",
-    "https://thequizofcrente.lucasparente1998.vercel.app/",
-    "https://wanda-vision-aluraquiz.marilira.vercel.app/"
+    "https://thequizofcrente-git-main.lucasparente1998.vercel.app/"    
   ],
   "theme": {
     "colors": {

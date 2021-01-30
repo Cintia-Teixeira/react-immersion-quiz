@@ -17,11 +17,16 @@ function ExternalQuizList() {
     <Widget.Content>
       <p><strong>Aproveita e dá uma olhada também nesses outros quizzes:</strong></p>
       {db.external.map((url) => {
-        const [repoName, gitHubUser] = url
+        const [repoFullName, gitHubUser] = url
           .replace(/\//g, '')
           .replace('https:', '')
           .replace('.vercel.app', '')
           .split('.');
+
+        const branch = repoFullName.match(/(git-main)/g);
+        const repo = repoFullName.replace('-git-main', '');
+        const project = branch !== null ? `${repo}__${branch}` : repoFullName;
+        const listedUser = gitHubUser !== undefined ? gitHubUser : ('Dev não identificado').toUpperCase();
         return (
           <li
             key={url}
@@ -34,9 +39,10 @@ function ExternalQuizList() {
               style={{
                 fontSize: '14.5px',
               }}
-              href={`/quiz/${repoName}___${gitHubUser}`}
+              href={gitHubUser !== undefined ? `/quiz/${project}___${gitHubUser}` : `/quiz/${project}`}
             >
-              {`${gitHubUser}/${repoName}`}
+              {branch !== null ? `${listedUser}/${repo}/${branch}` : `${listedUser}/${repo}`}
+
             </Widget.Topic>
           </li>
         );

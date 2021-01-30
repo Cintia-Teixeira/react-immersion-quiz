@@ -12,9 +12,10 @@ export default function ExternalQuizzes({ externalDb }) {
 }
 
 export async function getServerSideProps(context) {
-  const [repoName, gitHubUser] = context.query.id.split('___');
+  const [project, gitHubUser] = context.query.id.split('___');
+  const repoFullName = project.replace('__', '-');
   try {
-    const externalDb = await fetch(`https://${repoName}.${gitHubUser}.vercel.app/api/db`)
+    const externalDb = await fetch(gitHubUser !== undefined ? `https://${repoFullName}.${gitHubUser}.vercel.app/api/db` : `https://${repoFullName}.vercel.app/api/db`)
       .then((serverRes) => {
         if (serverRes.ok) {
           return serverRes.json();
