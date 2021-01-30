@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 function Logo({ className }) {
   return (

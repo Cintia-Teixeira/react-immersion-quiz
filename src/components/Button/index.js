@@ -27,7 +27,6 @@ cursor: pointer;
   }
 `;
 
-// eslint-disable-next-line react/prop-types
 export default function Button({ disabled, children, ...props }) {
   return (
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -38,5 +37,5 @@ export default function Button({ disabled, children, ...props }) {
 Button.propTypes = {
   type: PropTypes.oneOf(['submit', 'type', 'button']).isRequired,
   children: PropTypes.node.isRequired,
-  /* disabled: PropTypes.bool, */
+  disabled: PropTypes.bool.isRequired,
 };
