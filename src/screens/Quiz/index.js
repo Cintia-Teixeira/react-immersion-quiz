@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useRouter } from 'next/router';
+import { Lottie } from '@crello/react-lottie';
 
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
@@ -11,6 +12,7 @@ import GitHubCorner from '../../components/GitHubCorner';
 import AlternativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
+import loadingAnimation from './animations/loading.json';
 
 function ResultWidget({ results, name }) {
   return (
@@ -64,14 +66,12 @@ function LoadingWidget() {
       <Widget.Content
         style={{ padding: 0 }}
       >
-        <img
-          src="https://media.giphy.com/media/7qV3yswT0K8hi/giphy.gif"
-          alt="Loading"
-          style={{
-            width: '100%',
-            height: '200px',
-            objectFit: 'cover',
-          }}
+        <Lottie
+          width="100%"
+          height="200px"
+          objectFit="cover"
+          className="lottie-container basic"
+          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
         />
       </Widget.Content>
     </Widget>
