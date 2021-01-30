@@ -71,7 +71,10 @@ function LoadingWidget() {
           height="200px"
           objectFit="cover"
           className="lottie-container basic"
-          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
+          config={{
+            animationData: loadingAnimation, loop: true, autoplay: true,
+          }}
+          speed="2.5"
         />
       </Widget.Content>
     </Widget>
