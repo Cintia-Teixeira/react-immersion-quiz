@@ -2,7 +2,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-// import db from '../../../db.json';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import Widget from '../../components/Widget';

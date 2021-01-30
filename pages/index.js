@@ -92,7 +92,7 @@ export default function Home() {
           transition={{ type: 'spring', velocity: 2 }}
         />
       </QuizContainer>
-      <GitHubCorner />
+      <GitHubCorner projectUrl="https://github.com/Cintia-Teixeira/react-immersion-quiz" />
     </QuizBackground>
   );
 }
