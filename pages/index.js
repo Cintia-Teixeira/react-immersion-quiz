@@ -1,5 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { motion } from 'framer-motion';
+
+import { useRouter } from 'next/router';
+
+import InputBase from '../src/components/Input';
+import Button from '../src/components/Button';
 
 import db from '../db.json';
 import QuizBackground from '../src/components/QuizBackground';
@@ -8,11 +14,11 @@ import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-import HomeForm from '../src/components/HomeForm';
+// import HomeForm from '../src/components/HomeForm';
 import Link from '../src/components/Link';
 
 // eslint-disable-next-line react/prop-types
-function ExternalQuizList() {
+function ExternalQuizList({ name, router }) {
   return (
     <Widget.Content>
       <p><strong>Aproveita e dá uma olhada também nesses outros quizzes:</strong></p>
@@ -27,6 +33,8 @@ function ExternalQuizList() {
         const repo = repoFullName.replace('-git-main', '');
         const project = branch !== null ? `${repo}__${branch}` : repoFullName;
         const listedUser = gitHubUser !== undefined ? gitHubUser : ('Dev não identificado').toUpperCase();
+        const activedHref = gitHubUser !== undefined ? `/quiz/${project}___${gitHubUser}?name=${name}` : `/quiz/${project}?name=${name}`;
+
         return (
           <li
             key={url}
@@ -39,10 +47,17 @@ function ExternalQuizList() {
               style={{
                 fontSize: '14.5px',
               }}
-              href={gitHubUser !== undefined ? `/quiz/${project}___${gitHubUser}` : `/quiz/${project}`}
+              href={name.length === 0 ? '/' : activedHref}
+              onClick={(e) => {
+                e.preventDefault();
+                if (name.length === 0) {
+                  alert('Por favor, preencha seu nome :)');
+                } else {
+                  router.push(activedHref);
+                }
+              }}
             >
               {branch !== null ? `${listedUser}/${repo}/${branch}` : `${listedUser}/${repo}`}
-
             </Widget.Topic>
           </li>
         );
@@ -51,6 +66,14 @@ function ExternalQuizList() {
   );
 }
 export default function Home() {
+  const router = useRouter();
+
+  const [name, setName] = React.useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    router.push(`/quiz?name=${name}`);
+  }
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -76,7 +99,13 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p><strong>{db.description}</strong></p>
-            <HomeForm />
+            {/* <HomeForm /> */}
+            <form onSubmit={handleSubmit}>
+              <InputBase type="text" placeholder="Diz aí seu nome pra jogar :)" onChange={(e) => setName(e.target.value)} />
+              <Button type="submit" disabled={name.length === 0}>
+                Jogar
+              </Button>
+            </form>
           </Widget.Content>
         </Widget>
 
@@ -90,7 +119,7 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
-          <ExternalQuizList />
+          <ExternalQuizList name={name} router={router} />
         </Widget>
         <Footer
           as={motion.div}
