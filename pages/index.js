@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
 import InputBase from '../src/components/Input';
 import Button from '../src/components/Button';
@@ -14,11 +15,21 @@ import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-// import HomeForm from '../src/components/HomeForm';
 import Link from '../src/components/Link';
 
-// eslint-disable-next-line react/prop-types
-function ExternalQuizList({ name, router }) {
+const Modal = styled.div`
+position:absolute;
+  width: 284px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    background-color: ${({ theme }) => theme.colors.wrong};
+`;
+
+function ExternalQuizList({
+  name, router, isOpen, toggleModal,
+}) {
   return (
     <Widget.Content>
       <p><strong>Aproveita e dá uma olhada também nesses outros quizzes:</strong></p>
@@ -51,7 +62,7 @@ function ExternalQuizList({ name, router }) {
               onClick={(e) => {
                 e.preventDefault();
                 if (name.length === 0) {
-                  alert('Por favor, preencha seu nome :)');
+                  toggleModal();
                 } else {
                   router.push(activedHref);
                 }
@@ -62,6 +73,19 @@ function ExternalQuizList({ name, router }) {
           </li>
         );
       })}
+      { isOpen
+        && (
+        <Modal
+          isOpen={isOpen}
+          onBackgroundClick={toggleModal}
+          onEscapeKeydown={toggleModal}
+          style={{
+            zindex: isOpen ? 0 : -1,
+          }}
+        >
+          <span><strong>Por favor, preencha seu nome</strong></span>
+        </Modal>
+        )}
     </Widget.Content>
   );
 }
@@ -70,10 +94,17 @@ export default function Home() {
 
   const [name, setName] = React.useState('');
 
+  const [isOpen, setIsOpen] = React.useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     router.push(`/quiz?name=${name}`);
   }
+
+  function toggleModal() {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -99,9 +130,15 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p><strong>{db.description}</strong></p>
-            {/* <HomeForm /> */}
             <form onSubmit={handleSubmit}>
-              <InputBase type="text" placeholder="Diz aí seu nome pra jogar :)" onChange={(e) => setName(e.target.value)} />
+              <InputBase
+                type="text"
+                placeholder="Diz aí seu nome pra jogar :)"
+                onChange={(e) => {
+                  setName(e.target.value);
+                  if (name.length > 0) setIsOpen(false);
+                }}
+              />
               <Button type="submit" disabled={name.length === 0}>
                 Jogar
               </Button>
@@ -119,7 +156,7 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
-          <ExternalQuizList name={name} router={router} />
+          <ExternalQuizList name={name} router={router} isOpen={isOpen} toggleModal={toggleModal} />
         </Widget>
         <Footer
           as={motion.div}
