@@ -40,7 +40,7 @@ function Logo({ className }) {
         }}
         initial="hidden"
         animate="visible"
-        transition={{ delay: 0, duration: 1.5 }}
+        transition={{ delay: 0, duration: 2.0 }}
       />
 
       <motion.path
@@ -57,7 +57,7 @@ function Logo({ className }) {
         }}
         initial="hidden"
         animate="visible"
-        transition={{ delay: 0, duration: 1.5 }}
+        transition={{ delay: 0, duration: 2.0 }}
       />
     </svg>
   );

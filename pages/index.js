@@ -18,17 +18,22 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import Link from '../src/components/Link';
 
 const Modal = styled.div`
-position:absolute;
-  width: 284px;
-  height: 60px;
+  position: absolute;
   display: flex;
+  background-color: ${({ theme }) => theme.colors.wrong};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  width: 284px;
+  height: 50px;
+  margin-top: 6px;
   align-items: center;
   justify-content: center;
-    background-color: ${({ theme }) => theme.colors.wrong};
+     @media screen and (max-width: 500px) {
+    width: 80%;
+  }
 `;
 
 function ExternalQuizList({
-  name, router, isOpen, toggleModal,
+  name, router, toggleModal,
 }) {
   return (
     <Widget.Content>
@@ -73,19 +78,6 @@ function ExternalQuizList({
           </li>
         );
       })}
-      { isOpen
-        && (
-        <Modal
-          isOpen={isOpen}
-          onBackgroundClick={toggleModal}
-          onEscapeKeydown={toggleModal}
-          style={{
-            zindex: isOpen ? 0 : -1,
-          }}
-        >
-          <span><strong>Por favor, preencha seu nome</strong></span>
-        </Modal>
-        )}
     </Widget.Content>
   );
 }
@@ -139,6 +131,21 @@ export default function Home() {
                   if (name.length > 0) setIsOpen(false);
                 }}
               />
+              { isOpen
+        && (
+        <Modal
+          as={motion.div}
+          animate={{ scale: 1.05 }}
+          transition={{ duration: 0.5 }}
+          isOpen={isOpen}
+          style={{
+            zindex: isOpen ? 0 : -1,
+          }}
+        >
+          <span><strong>Por favor, preencha seu nome</strong></span>
+        </Modal>
+
+        )}
               <Button type="submit" disabled={name.length === 0}>
                 Jogar
               </Button>
